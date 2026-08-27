@@ -23,11 +23,15 @@ public class TestListener implements ITestListener {
 	ExtentTest extentTest;
 
 	public void onTestStart(ITestResult result) { // called when will be the test is going to start.
+		if (result == null) {
+	        return;
+	    }else {
+	    
 		logger.info(result.getMethod().getMethodName());
 		logger.info(result.getMethod().getDescription());
 		logger.info(Arrays.toString(result.getMethod().getGroups()));
 		ExtentReporterUtility.createExtentTest(result.getMethod().getMethodName());
-	}
+	}}
 
 	public void onTestSuccess(ITestResult result) { // When the test is success
 		logger.info(result.getMethod().getMethodName() + " " + "PASSED");
@@ -55,21 +59,9 @@ public class TestListener implements ITestListener {
 	    // Add null checks before accessing objects
 	    if (result == null) {
 	        return;
-	    }
+	    }else {
 	    
-//	    // Check if WebDriver or any critical object is initialized
-//	    if (driver != null) {
-//	        try {
-//	            // Take screenshot or log failure details
-//	            takeScreenshot(result.getName());
-//	        } catch (Exception e) {
-//	            // Log the error but don't let it crash the listener
-//	            System.out.println("Error in onTestFailure: " + e.getMessage());
-//	        }
-	     else {
-	        System.out.println("WebDriver is null in onTestFailure listener");
-	    }
-	    
+//	    	    
 	    logger.error(result.getMethod().getMethodName() + " " + "FAILED");
 		logger.error(result.getThrowable().getMessage());
 		ExtentReporterUtility.getTest().log(Status.FAIL, result.getMethod().getMethodName() + " " + "FAILED");
@@ -81,7 +73,7 @@ public class TestListener implements ITestListener {
 		String screenShotPath = browserUtility.takeScreenShot(result.getMethod().getMethodName());
 		logger.info("Attaching to the screenshot to the HTML file");
 
-		ExtentReporterUtility.getTest().addScreenCaptureFromPath(screenShotPath);	}
+		ExtentReporterUtility.getTest().addScreenCaptureFromPath(screenShotPath);}	}
 
 	public void onTestSkipped(ITestResult result) {
 		logger.warn(result.getMethod().getMethodName() + " " + "SKIPPED");
