@@ -23,15 +23,11 @@ public class TestListener implements ITestListener {
 	ExtentTest extentTest;
 
 	public void onTestStart(ITestResult result) { // called when will be the test is going to start.
-		if (result == null) {
-	        return;
-	    }else {
-	    
 		logger.info(result.getMethod().getMethodName());
 		logger.info(result.getMethod().getDescription());
 		logger.info(Arrays.toString(result.getMethod().getGroups()));
 		ExtentReporterUtility.createExtentTest(result.getMethod().getMethodName());
-	}}
+	}
 
 	public void onTestSuccess(ITestResult result) { // When the test is success
 		logger.info(result.getMethod().getMethodName() + " " + "PASSED");
@@ -39,30 +35,8 @@ public class TestListener implements ITestListener {
 
 	}
 
-//	public void onTestFailure(ITestResult result) { // When the test is failure
-//		logger.error(result.getMethod().getMethodName() + " " + "FAILED");
-//		logger.error(result.getThrowable().getMessage());
-//		ExtentReporterUtility.getTest().log(Status.FAIL, result.getMethod().getMethodName() + " " + "FAILED");
-//		ExtentReporterUtility.getTest().log(Status.FAIL, result.getThrowable().getMessage());
-//
-//		Object testclass = result.getInstance();
-//		BrowserUtility browserUtility = ((TestBase) testclass).getInstance();
-//		logger.info("Capture the screen shot");
-//		String screenShotPath = browserUtility.takeScreenShot(result.getMethod().getMethodName());
-//		logger.info("Attaching to the screenshot to the HTML file");
-//
-//		ExtentReporterUtility.getTest().addScreenCaptureFromPath(screenShotPath);
-//
-//	}
-	@Override
-	public void onTestFailure(ITestResult result) {
-	    // Add null checks before accessing objects
-	    if (result == null) {
-	        return;
-	    }else {
-	    
-//	    	    
-	    logger.error(result.getMethod().getMethodName() + " " + "FAILED");
+	public void onTestFailure(ITestResult result) { // When the test is failure
+		logger.error(result.getMethod().getMethodName() + " " + "FAILED");
 		logger.error(result.getThrowable().getMessage());
 		ExtentReporterUtility.getTest().log(Status.FAIL, result.getMethod().getMethodName() + " " + "FAILED");
 		ExtentReporterUtility.getTest().log(Status.FAIL, result.getThrowable().getMessage());
@@ -73,7 +47,10 @@ public class TestListener implements ITestListener {
 		String screenShotPath = browserUtility.takeScreenShot(result.getMethod().getMethodName());
 		logger.info("Attaching to the screenshot to the HTML file");
 
-		ExtentReporterUtility.getTest().addScreenCaptureFromPath(screenShotPath);}	}
+		ExtentReporterUtility.getTest().addScreenCaptureFromPath(screenShotPath);
+
+	}
+	
 
 	public void onTestSkipped(ITestResult result) {
 		logger.warn(result.getMethod().getMethodName() + " " + "SKIPPED");
