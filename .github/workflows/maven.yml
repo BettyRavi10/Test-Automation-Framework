@@ -20,7 +20,17 @@ jobs:
                   java-version: "11"
                   distribution: "temurin"
                   cache: maven
-
+            - name: Setup Maven settings-security
+              run: |
+                mkdir -p ~/.m2
+                cat > ~/.m2/settings-security.xml <<'EOF'
+                <?xml version="1.0" encoding="UTF-8"?>
+                <settingsSecurity>
+                  <!-- your encrypted master password here -->
+                  <master>ENCRYPTED_MASTER_PASSWORD</master>
+                </settingsSecurity>
+                EOF
+        
             - name: Running the test automation Framework with Maven
               run: mvn test -X -Dbrowser=chrome -DisLambdaTest=true -DisHeadLess=false
             - name: Upload Test Logs
@@ -39,3 +49,5 @@ jobs:
 
             - name: Test Execution Status
               run: echo "Test Execution Completed"
+
+            
