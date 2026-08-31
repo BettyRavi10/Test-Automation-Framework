@@ -32,7 +32,7 @@ jobs:
                 EOF
         
             - name: Running the test automation Framework with Maven
-              run: mvn test -X -Dbrowser=chrome -DisLambdaTest=false -DisHeadLess=true
+              run: mvn test -X -Dbrowser=chrome -DisLambdaTest=false -DisHeadless=true
             - name: Upload Test Logs
               if: always()
               uses: actions/upload-artifact@v7.0.1
