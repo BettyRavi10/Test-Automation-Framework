@@ -14,7 +14,7 @@ public class PropertiesUtil {
 
 	public static String readProperty(Env env,String propertyName ) {
 		System.out.println(System.getProperty("user.dir")); //C:\Users\betty\eclipse-workspace\SDET\Automation_project_practice
-		File propFile = new File(System.getProperty("user.dir") + "\\config\\" + env + ".properties"); //filepath of the properties file
+		File propFile = new File(System.getProperty("user.dir") + "//config//" + env + ".properties"); //filepath of the properties file
 		FileReader fileReader = null;
 		Properties properties = new Properties(); // create object of Properties class
 

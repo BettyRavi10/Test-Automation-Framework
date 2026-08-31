@@ -65,8 +65,8 @@ public abstract class BrowserUtility {
 		if (browserName == Browser.CHROME) {
 			if (isHeadless) {
 				ChromeOptions options = new ChromeOptions();
-				//options.addArguments("--headless=old"); // headless
-				//options.addArguments("--window-size=1920,1080");
+				options.addArguments("--headless=old"); // headless
+				options.addArguments("--window-size=1920,1080");
 				options.addArguments("--headless");
 				options.addArguments("--no-sandbox");
 				options.addArguments("--disable-dev-shm-usage");
@@ -135,7 +135,9 @@ public abstract class BrowserUtility {
 		Date date = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("HH-MM-SS");
 		String timeStamp = format.format(date);
-		String path = System.getProperty("user.dir") + ("//screenshots//" + name + "-" + "timeStamp" + ".png");
+		//String path = System.getProperty("user.dir") + ("//screenshots//" + name + "-" + "timeStamp" + ".png");
+		String path = "./screenshots/" + name + "-" + timeStamp + ".png";
+
 		File screenShotFile = new File(path);
 		try {
 			FileUtils.copyFile(screenShotData, screenShotFile);
