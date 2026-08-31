@@ -67,7 +67,7 @@ public abstract class BrowserUtility {
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--headless=old"); // headless
 				options.addArguments("--window-size=1920,1080");
-				options.addArguments("--headless");
+				//options.addArguments("--headless");
 				options.addArguments("--no-sandbox");
 				options.addArguments("--disable-dev-shm-usage");
 				options.addArguments("--disable-gpu");
