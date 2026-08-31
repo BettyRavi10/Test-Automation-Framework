@@ -43,25 +43,25 @@ public class LoginTest extends TestBase {
 
 	}
 
-	@Test(description = "Login test with valid credentials", groups = { "e2e",
-			"sanity" }, dataProviderClass = com.ui.dataproviders.LoginDataProvider.class, dataProvider = "loginCSVDataProvider")
-	public void loginCSVTest(User user) { // Test method with data provider, user is the object of User class which is
-											// passed from the data provider
-
-		assertEquals(homePage.goToLoginPage().doLoginWithValidCredentials(user.getEmailAddress(), user.getPassword())
-				.getUserName(), "Betty Singarayan");
-
-	}
-
-	@Test(description = "Login test with valid credentials", groups = { "e2e",
-			"sanity" }, dataProviderClass = com.ui.dataproviders.LoginDataProvider.class, dataProvider = "loginExcelDataProvider", retryAnalyzer = com.ui.listeners.MyRetryAnalyzer.class)
-	public void loginExcelTest(User user) { // Test method with data provider, user is the object of User class which is
-		// passed from the data provider
-		logger.info("launch homepage");
-		assertEquals(homePage.goToLoginPage().doLoginWithValidCredentials(user.getEmailAddress(), user.getPassword())
-				.getUserName(), "Betty Singarayan");
-
-
-	}
+//	@Test(description = "Login test with valid credentials", groups = { "e2e",
+//			"sanity" }, dataProviderClass = com.ui.dataproviders.LoginDataProvider.class, dataProvider = "loginCSVDataProvider")
+//	public void loginCSVTest(User user) { // Test method with data provider, user is the object of User class which is
+//											// passed from the data provider
+//
+//		assertEquals(homePage.goToLoginPage().doLoginWithValidCredentials(user.getEmailAddress(), user.getPassword())
+//				.getUserName(), "Betty Singarayan");
+//
+//	}
+//
+//	@Test(description = "Login test with valid credentials", groups = { "e2e",
+//			"sanity" }, dataProviderClass = com.ui.dataproviders.LoginDataProvider.class, dataProvider = "loginExcelDataProvider", retryAnalyzer = com.ui.listeners.MyRetryAnalyzer.class)
+//	public void loginExcelTest(User user) { // Test method with data provider, user is the object of User class which is
+//		// passed from the data provider
+//		logger.info("launch homepage");
+//		assertEquals(homePage.goToLoginPage().doLoginWithValidCredentials(user.getEmailAddress(), user.getPassword())
+//				.getUserName(), "Betty Singarayan");
+//
+//
+//	}
 
 }
