@@ -20,21 +20,26 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 import com.constants.Browser;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public abstract class BrowserUtility {
 	private static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 
 	public WebDriver getDriver() {
 		return driver.get();
+		
 	}
 
 	public BrowserUtility(WebDriver driver) { // parameterized constructor
 		super();
 		this.driver.set(driver); // initialize the instance variable driver.
+		
 	}
 
 	public BrowserUtility(String browserName) { // parameterized constructor
 		if (browserName.equalsIgnoreCase("chrome")) {
 			driver.set(new ChromeDriver());
+			WebDriverManager.chromedriver().setup();
 		} else if (browserName.equalsIgnoreCase("firefox")) {
 			driver.set(new FirefoxDriver());
 		} else if (browserName.equalsIgnoreCase("edge")) {
@@ -47,6 +52,7 @@ public abstract class BrowserUtility {
 	public BrowserUtility(Browser browserName) { //
 		if (browserName == Browser.CHROME) {
 			driver.set(new ChromeDriver());
+			WebDriverManager.chromedriver().setup();
 		} else if (browserName == Browser.FIREFOX) {
 			driver.set(new FirefoxDriver());
 		} else if (browserName == Browser.EDGE) {
@@ -61,7 +67,11 @@ public abstract class BrowserUtility {
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--headless=old"); // headless
 				options.addArguments("--window-size=1920,1080");
+				options.addArguments("--no-sandbox");
+				options.addArguments("--disable-dev-shm-usage");
+				options.addArguments("--headless=new");
 				driver.set(new ChromeDriver(options));
+				WebDriverManager.chromedriver().setup();
 			} else {
 				driver.set(new ChromeDriver());
 
