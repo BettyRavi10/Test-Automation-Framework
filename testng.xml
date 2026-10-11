@@ -7,7 +7,14 @@
 		<parameter name="isLambdaTest" value="${isLambdaTest}"></parameter>
 		<parameter name="isHeadless" value="${isHeadless}"></parameter>
 		<classes>
-			<class name="com.ui.tests.LoginTest" />
+			<class name="com.ui.tests.LoginTest" />	
+			<class name="com.ui.tests.InvalidCredLoginTest" />
+			<class name="com.ui.tests.AddNewFirstAddressTest" />
+			<class name="com.ui.tests.ProductCheckOuttest" />
+			<class name="com.ui.tests.SearchProductTest" />
+			
+			
+			
 		</classes>
 	</test>
 
